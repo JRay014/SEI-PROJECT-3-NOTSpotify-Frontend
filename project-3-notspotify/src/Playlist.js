@@ -21,9 +21,14 @@ class Playlist extends Component {
     render() {
       // console.log(this.state.songs)
         return (
+              //Add Delete to each song render
             <div>
                 <ul>
                     <li>{this.props.playlist.name}</li>
+                    <button onClick={()=>{
+                        this.props.deletePlaylist(this.props.playlist._id)
+                      }
+                    }>Delete</button>
                     {
                       this.state.songs.map((songs,i)=>{
                       return(
