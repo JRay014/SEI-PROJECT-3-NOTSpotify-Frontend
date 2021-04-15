@@ -5,16 +5,31 @@ class Playlist extends Component {
         super(props)
 
         this.state = {
-            song: [],
+            songs: [],
         }
     }
 
+    addSongs = ()=>{
+      this.setState({
+        songs: [...this.props.playlist.songs]
+      })
+    }
+    componentDidMount() {
+      this.addSongs()
+    }
+
     render() {
+      // console.log(this.state.songs)
         return (
             <div>
                 <ul>
                     <li>{this.props.playlist.name}</li>
-                    <li>{this.props.playlist.songs}</li>
+                    {
+                      this.state.songs.map((songs,i)=>{
+                      return(
+                        <li key={i}>{songs}</li>
+                      )}
+                    )}
                 </ul>
             </div>
         )
