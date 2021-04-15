@@ -1,28 +1,44 @@
 import React, { Component } from 'react'
 import './App.css';
+import Playlist from "./Playlist.js"
 
-class Search extends Component {
+let baseUrl = ''
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:3003'
+} else {
+  baseUrl = 'heroku url here'
+}
+
+class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      baseURL: '',
-      apikey: `apikey=${process.env.REACT_APP_API_KEY}`,
-      query: '',
-      songs: [],
-      searchURL: ''
+        playlist: [],
     }
   }
-}
 
+  getPlaylist = async() => {
+    const response = await fetch(baseUrl + "/notspotify")
+    const parseData = await response.json()
+    this.setState({
+      playlist: parseData,
+    })
+  }
 
+  componentDidMount() {
+    this.getPlaylist()
+  }
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  render() {
+    console.log(this.state.playlist)
+    return (
+      <div className="App">
+        <Playlist />
+      </div>
+    );
+  }
+
 }
 
 export default App;

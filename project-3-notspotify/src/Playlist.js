@@ -8,4 +8,16 @@ class Playlist extends Component {
             song: [],
         }
     }
+
+    render() {
+        return (
+            <div>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        )
+    }
 }
+
+export default Playlist
