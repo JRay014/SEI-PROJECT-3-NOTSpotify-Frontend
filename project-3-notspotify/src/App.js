@@ -34,7 +34,14 @@ class App extends Component {
     console.log(this.state.playlist)
     return (
       <div className="App">
-        <Playlist />
+        {
+          this.state.playlist.map(playlist=>{
+            return(
+              <Playlist key={playlist._id} playlist={playlist}/>
+            )
+          })
+        }
+
       </div>
     );
   }

@@ -13,7 +13,8 @@ class Playlist extends Component {
         return (
             <div>
                 <ul>
-                    <li></li>
+                    <li>{this.props.playlist.name}</li>
+                    <li>{this.props.playlist.songs}</li>
                 </ul>
             </div>
         )
