@@ -1,0 +1,30 @@
+{
+    "name": "MVP Data",
+    "data": [
+      {
+        "name": "Grenade",
+        "artist": "Bruno Mars",
+        "album": "Doo-Wops & Hooligans",
+        "year": "2010",
+        "genre": "Pop"
+      },
+      {
+        "name": "Like Woah",
+        "artist": "Logic",
+        "album": "The Incredible True Story",
+        "year": "2015",
+        "genre": "Rap"
+      },
+      {
+        "name": "Let It Be",
+        "artist": "The Beatles",
+        "album": "1",
+        "year": "1968",
+        "genre": "Rock"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }
