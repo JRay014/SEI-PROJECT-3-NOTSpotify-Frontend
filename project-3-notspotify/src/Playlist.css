@@ -1,0 +1,35 @@
+.Playlist {
+    text-align: center;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Playlist table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.Playlist table, th, td {
+    border: 1px solid black;
+  }
+
+.Playlist-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Playlist-header-buttons {
+    margin-top: 1rem;
+    
+}
+
+.Playlist-header-buttons button {
+    padding: .2rem;
+    margin-left: .2rem
+}
+
+.Playlist-header-buttons button:hover, .Playlist-delete-song:hover{
+    cursor: pointer;
+}

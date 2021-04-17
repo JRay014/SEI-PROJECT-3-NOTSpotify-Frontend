@@ -14,38 +14,39 @@ class App extends Component {
     super(props)
 
     this.state = {
-        playlist: [],
+      playlist: [],
     }
   }
 
-  getPlaylist = async() => {
+  getPlaylist = async () => {
     const response = await fetch(baseUrl + "/notspotify")
     const parseData = await response.json()
+    console.log(parseData)
     this.setState({
       playlist: parseData,
     })
   }
 
-  deletePlaylist = async(id)=>{
-    const url = baseUrl + "/notspotify/" +  id
+  deletePlaylist = async (id) => {
+    const url = baseUrl + "/notspotify/" + id
 
-      try{
+    try {
 
-        const response = await fetch(url,{method: "DELETE"})
-        if (response.status === 200){
-          const index = this.state.playlist.findIndex(playlist => playlist._id === id)
-          const copyPlaylist = [...this.state.playlist]
+      const response = await fetch(url, { method: "DELETE" })
+      if (response.status === 200) {
+        const index = this.state.playlist.findIndex(playlist => playlist._id === id)
+        const copyPlaylist = [...this.state.playlist]
 
-          copyPlaylist.splice(index, 1)
-          this.setState({
-            playlist: copyPlaylist
-          })
-        }
-      }
-      catch (err){
-        console.log('error: ', err)
+        copyPlaylist.splice(index, 1)
+        this.setState({
+          playlist: copyPlaylist
+        })
       }
     }
+    catch (err) {
+      console.log('error: ', err)
+    }
+  }
 
 
   componentDidMount() {
@@ -57,24 +58,24 @@ class App extends Component {
     console.log(this.state.playlist)
     return (
       <>
-      <div className="buttons">
-        <button onClick= {this.deletePlaylist}> Delete Playlist </button>
-        <button onCLick={this.addToPlaylist}> Add to Playlist </button>
-        <button onClick={this.editPlaylist}> Edit Playlist </button>
+        <div className="buttons">
+          <button onClick={this.deletePlaylist}> Delete Playlist </button>
+          <button onCLick={this.addToPlaylist}> Add to Playlist </button>
+          <button onClick={this.editPlaylist}> Edit Playlist </button>
 
-      </div>
+        </div>
 
-      <div className="App">
+        <div className="App">
 
-        {
-          this.state.playlist.map(playlist=>{
-            return(
-              <Playlist key={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist}/>
-            )
-          })
-        }
+          {
+            this.state.playlist.map(playlist => {
+              return (
+                <Playlist key={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} />
+              )
+            })
+          }
 
-      </div>
+        </div>
       </>
     );
   }
