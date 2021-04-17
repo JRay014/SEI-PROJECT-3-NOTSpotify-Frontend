@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import Playlist from "./Playlist.js"
+import NewPlaylist from "./NewPlaylistForm"
 
 let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
@@ -15,6 +16,7 @@ class App extends Component {
 
     this.state = {
       playlist: [],
+      newPlaylistForm: false
     }
   }
 
@@ -48,6 +50,22 @@ class App extends Component {
     }
   }
 
+  //To add new playlist
+  handleNewPlaylist = () => {
+    console.log(this.state.playlistNameEdit)
+    this.setState({
+      newPlaylistForm: !this.state.newPlaylistForm
+    })
+  }
+
+  addPlaylist = (newPlaylist) => {
+    const copyPlaylist = [...this.state.playlist]
+    copyPlaylist.push(newPlaylist)
+    this.setState({
+      playlist: copyPlaylist
+    })
+  }
+
 
   componentDidMount() {
     this.getPlaylist()
@@ -58,14 +76,17 @@ class App extends Component {
     console.log(this.state.playlist)
     return (
       <>
-        <div className="buttons">
-          <button onClick={this.deletePlaylist}> Delete Playlist </button>
-          <button onClick={this.addToPlaylist}> Add to Playlist </button>
-          <button onClick={this.editPlaylist}> Edit Playlist </button>
-
+        <div className="App-buttons">
+          <button onClick={this.handleNewPlaylist}> Add Playlist </button>
         </div>
 
+
         <div className="App">
+          {
+            this.state.newPlaylistForm
+              ? <NewPlaylist baseUrl={baseUrl} addPlaylist={this.addPlaylist} />
+              : ''
+          }
 
           {
             this.state.playlist.map(playlist => {
