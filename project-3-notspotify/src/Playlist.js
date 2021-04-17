@@ -70,8 +70,10 @@ class Playlist extends Component {
     const url = this.props.baseUrl + "/notspotify/" + this.props.playlist._id
 
     try {
-      const index = this.state.songs.indexOf(song)
+      const index = this.state.songs.findIndex(s => s.name === song.name && s.artist === song.artist)
+      console.log(index)
       const copySongs = [...this.state.songs]
+      console.log(copySongs)
       copySongs.splice(index, 1)
       const response = await fetch(url, {
         method: "PUT",
@@ -83,10 +85,7 @@ class Playlist extends Component {
         }
       })
       if (response.status === 200) {
-        const index = this.state.songs.indexOf(song)
-        const copySongs = [...this.state.songs]
 
-        copySongs.splice(index, 1)
         this.setState({
           songs: copySongs
         })
@@ -140,15 +139,10 @@ class Playlist extends Component {
           </thead>
           <tbody>
             {
-              this.state.songs.map((song, i) => {
+              this.state.songs.map((song) => {
                 return (
 
                   <Song song={song} deleteSong={this.deleteSong} />
-                  // <tr>
-                  //   <td>{songs.name}</td>
-                  //   <td>{songs.artist}</td>
-                  //   <td className="Playlist-delete-song">X</td>
-                  // </tr>
 
                 )
               }

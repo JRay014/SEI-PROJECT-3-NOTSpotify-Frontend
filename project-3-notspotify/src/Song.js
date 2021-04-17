@@ -19,7 +19,7 @@ class Song extends Component {
             <tr className="Song">
                 <td>{this.props.song.name}</td>
                 <td>{this.props.song.artist}</td>
-                <td onClick={() => this.props.deleteSong(this.props.song.name)} className="Song-delete">X</td>
+                <td onClick={() => this.props.deleteSong(this.props.song)} className="Song-delete">X</td>
             </tr>
         )
     }
