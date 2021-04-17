@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Song from "./Song"
 import './Playlist.css'
 
 class Playlist extends Component {
@@ -65,6 +66,37 @@ class Playlist extends Component {
 
   }
 
+  deleteSong = async (song) => {
+    const url = this.props.baseUrl + "/notspotify/" + this.props.playlist._id
+
+    try {
+      const index = this.state.songs.indexOf(song)
+      const copySongs = [...this.state.songs]
+      copySongs.splice(index, 1)
+      const response = await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify({
+          songs: copySongs
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.status === 200) {
+        const index = this.state.songs.indexOf(song)
+        const copySongs = [...this.state.songs]
+
+        copySongs.splice(index, 1)
+        this.setState({
+          songs: copySongs
+        })
+      }
+    }
+    catch (err) {
+      console.log('error: ', err)
+    }
+  }
+
 
   componentDidMount() {
     this.setValue()
@@ -108,13 +140,15 @@ class Playlist extends Component {
           </thead>
           <tbody>
             {
-              this.state.songs.map((songs, i) => {
+              this.state.songs.map((song, i) => {
                 return (
-                  <tr>
-                    <td>{songs.name}</td>
-                    <td>{songs.artist}</td>
-                    <td className="Playlist-delete-song">X</td>
-                  </tr>
+
+                  <Song song={song} deleteSong={this.deleteSong} />
+                  // <tr>
+                  //   <td>{songs.name}</td>
+                  //   <td>{songs.artist}</td>
+                  //   <td className="Playlist-delete-song">X</td>
+                  // </tr>
 
                 )
               }
