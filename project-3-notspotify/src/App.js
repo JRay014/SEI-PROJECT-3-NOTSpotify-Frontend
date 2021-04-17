@@ -15,6 +15,11 @@ class App extends Component {
     super(props)
 
     this.state = {
+      rootURL: 'https://api.musixmatch.com/ws/1.1/?',
+      apiKey: 'api_key=5nfSzNYdLo3RS2vckrwcsoDcCYVjBomy',
+      query: '&q=',
+      queryURL: '',
+      querySongs: [],
       playlist: [],
       newPlaylistForm: false
     }
@@ -26,6 +31,15 @@ class App extends Component {
     console.log(parseData)
     this.setState({
       playlist: parseData,
+    })
+  }
+
+  getSong = async () => {
+    const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + this.state.queryURL)
+    const parseData = await response.json()
+    console.log(parseData)
+    this.setState({
+      querySongs: parseData,
     })
   }
 
