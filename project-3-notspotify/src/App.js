@@ -15,8 +15,8 @@ class App extends Component {
     super(props)
 
     this.state = {
-      rootURL: 'https://api.musixmatch.com/ws/1.1/?',
-      apiKey: 'api_key=5nfSzNYdLo3RS2vckrwcsoDcCYVjBomy',
+      rootURL: 'https://api.musixmatch.com/ws/1.1/track.search?',
+      apiKey: 'apikey=54340e8a4266915b118c498fc98c1f6f',
       query: '&q=',
       queryURL: '',
       querySongs: [],
@@ -34,13 +34,24 @@ class App extends Component {
     })
   }
 
-  getSong = async () => {
-    const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + this.state.queryURL)
-    const parseData = await response.json()
-    console.log(parseData)
-    this.setState({
-      querySongs: parseData,
-    })
+  getSong = async (event) => {
+    event.preventDefault()
+    try {
+      console.log(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
+      const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
+      const parseData = await response.json()
+      console.log(parseData)
+      this.setState({
+        querySongs: parseData,
+        queryURL: ''
+      })
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({ [event.target.id]: event.target.value })
   }
 
   deletePlaylist = async (id) => {
@@ -90,6 +101,20 @@ class App extends Component {
 
     return (
       <>
+        <form onSubmit={(e)=> this.getSong(e)}>
+          <input
+            id='song'
+            type='text'
+            placeholder='Search for Songs'
+            value={this.state.queryURL}
+            onChange={this.handleChange}
+          />
+          <input
+            type='submit'
+            value='Find Songs'
+          />
+        </form>
+
         <div className="App-buttons">
           <button onClick={this.handleNewPlaylist}> Add Playlist </button>
         </div>
