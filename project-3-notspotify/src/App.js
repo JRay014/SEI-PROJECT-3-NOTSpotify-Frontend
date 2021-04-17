@@ -87,7 +87,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.playlist)
+
     return (
       <>
         <div className="App-buttons">
