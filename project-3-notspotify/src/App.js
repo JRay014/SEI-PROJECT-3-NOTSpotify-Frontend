@@ -60,7 +60,7 @@ class App extends Component {
       <>
         <div className="buttons">
           <button onClick={this.deletePlaylist}> Delete Playlist </button>
-          <button onCLick={this.addToPlaylist}> Add to Playlist </button>
+          <button onClick={this.addToPlaylist}> Add to Playlist </button>
           <button onClick={this.editPlaylist}> Edit Playlist </button>
 
         </div>
@@ -70,7 +70,7 @@ class App extends Component {
           {
             this.state.playlist.map(playlist => {
               return (
-                <Playlist key={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} />
+                <Playlist baseUrl={baseUrl} id={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} />
               )
             })
           }
