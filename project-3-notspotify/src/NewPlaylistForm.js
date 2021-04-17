@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./NewPlaylistForm.css"
 
 
 class NewPlaylist extends Component {
@@ -30,6 +31,7 @@ class NewPlaylist extends Component {
 
             const parsedResponse = await response.json()
             this.props.addPlaylist(parsedResponse)
+            this.props.handleNewPlaylist()
             this.setState({
                 name: '',
 
@@ -44,11 +46,11 @@ class NewPlaylist extends Component {
     render() {
         return (
             <>
-                <form onSubmit={(evt) => this.handleSubmit(evt)}>
+                <form className="NewPlaylistForm" onSubmit={(evt) => this.handleSubmit(evt)}>
                     <label htmlFor="name">Name: </label>
-                    <input type="text" id="name" name="name" onChange={(evt) => this.handleChangeName(evt)} value={this.state.name} />
+                    <input required="true" type="text" id="name" name="name" onChange={(evt) => this.handleChangeName(evt)} value={this.state.name} />
                     <br></br>
-                    <input type="submit" value="Add New Playlist" />
+                    <button type="submit">Add Playlist</button>
                 </form>
             </>
         )

@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       rootURL: 'https://api.musixmatch.com/ws/1.1/track.search?',
       apiKey: 'apikey=54340e8a4266915b118c498fc98c1f6f',
-      query: '&q=',
+      query: '&q_track=',
       queryURL: '',
       querySongs: [],
       playlist: [],
@@ -45,7 +45,7 @@ class App extends Component {
         querySongs: parseData,
         queryURL: ''
       })
-    } catch(err) {
+    } catch (err) {
       console.log(err)
     }
   }
@@ -101,7 +101,7 @@ class App extends Component {
 
     return (
       <>
-        <form onSubmit={(e)=> this.getSong(e)}>
+        <form onSubmit={(e) => this.getSong(e)}>
           <input
             id='song'
             type='text'
@@ -123,7 +123,7 @@ class App extends Component {
         <div className="App">
           {
             this.state.newPlaylistForm
-              ? <NewPlaylist baseUrl={baseUrl} addPlaylist={this.addPlaylist} />
+              ? <NewPlaylist baseUrl={baseUrl} addPlaylist={this.addPlaylist} handleNewPlaylist={this.handleNewPlaylist} />
               : ''
           }
 
