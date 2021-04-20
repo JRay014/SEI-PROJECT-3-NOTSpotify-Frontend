@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter, Switch,Route} from 'react-router-dom'
 import './index.css';
 import App from './App';
+import Nav from './Navbar'
+import Login from './Login'
+import Register from './Register'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Nav />
+      <Route exact path="/sessions/new" component={Login} />
+      <Route exact path="/users/register" component={Register} />
+      <Route exact path="/" component={App} />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
