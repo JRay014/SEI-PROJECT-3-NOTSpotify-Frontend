@@ -3,12 +3,24 @@ import './App.css';
 import Playlist from "./Playlist.js"
 import NewPlaylist from "./NewPlaylistForm"
 
+import Musixmatch from 'musixmatch'
+
 let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
 } else {
   baseUrl = 'heroku url here'
 }
+
+
+
+const msx = Musixmatch({ apikey: '54340e8a4266915b118c498fc98c1f6f' })
+
+msx.chartArtists({ country: 'us', page: 1, page_size: 3 }).then(function (data) {
+  console.log(data.artist_list)
+}).catch(function (err) {
+  console.log(err.stack)
+})
 
 class App extends Component {
   constructor(props) {
@@ -28,27 +40,27 @@ class App extends Component {
   getPlaylist = async () => {
     const response = await fetch(baseUrl + "/notspotify")
     const parseData = await response.json()
-    console.log(parseData)
+
     this.setState({
       playlist: parseData,
     })
   }
 
-  getSong = async (event) => {
-    event.preventDefault()
-    try {
-      console.log(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
-      const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
-      const parseData = await response.json()
-      console.log(parseData)
-      this.setState({
-        querySongs: parseData,
-        queryURL: ''
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // getSong = async (event) => {
+  //   event.preventDefault()
+  //   try {
+  //     console.log(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
+  //     const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
+  //     const parseData = await response.json()
+  //     console.log(parseData)
+  //     this.setState({
+  //       querySongs: parseData,
+  //       queryURL: ''
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   handleChange = (event) => {
     this.setState({ [event.target.id]: event.target.value })
@@ -95,6 +107,10 @@ class App extends Component {
   componentDidMount() {
     this.getPlaylist()
   }
+
+
+
+
 
 
   render() {
