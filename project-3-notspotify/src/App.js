@@ -3,7 +3,10 @@ import './App.css';
 import Playlist from "./Playlist.js"
 import NewPlaylist from "./NewPlaylistForm"
 
+<<<<<<< HEAD
 import Musixmatch from 'musixmatch'
+=======
+>>>>>>> c3ad1bb827d227e92d867ae21462c65bf4eb68b0
 
 let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
