@@ -1,4 +1,4 @@
-import {Container,Menu,Button} from 'semantic-ui-react'
+import {Container, Menu, Button} from 'semantic-ui-react'
 
 export default function Nav (props){
   return(
