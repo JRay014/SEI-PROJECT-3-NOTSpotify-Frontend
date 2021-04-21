@@ -19,6 +19,7 @@ export default class Register extends Component {
       username: this.state.username,
       password: this.state.password,
     }
+    console.log(user)
     try {
       const response = await fetch('http://localhost:3003/users/register', {
         method: "POST",
@@ -28,10 +29,9 @@ export default class Register extends Component {
         }
       })
       if (response.status === 200) {
-        return (
-          console.log(response.ok),//Showing that the status is okay
-          Response.redirect('http://localhost:3003/sessions/new')
-        )
+        console.log('account created')
+        console.log(await response.json())
+        this.props.history.push('/notspotify')
       }
     }
     catch (err) {

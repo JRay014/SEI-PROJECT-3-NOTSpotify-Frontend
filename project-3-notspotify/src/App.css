@@ -1,3 +1,16 @@
+:root {
+  --primary :rgb(111, 136, 103);
+  --text-one : rgb(255, 244, 244);
+}
+
+body {
+  height: 100vh;
+  background: #D0F5A4;
+  background: -moz-linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
+  background: -webkit-linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
+  background: linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
+}
+
 .App {
   text-align: center;
 }
@@ -38,10 +51,12 @@
 }
 
 
+
+
 .Navbar {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(156, 226, 203);
+  background-color: var(--primary);
 }
 
 .Navbar-links, .Navbar-loggedIn {
@@ -52,8 +67,17 @@
   align-items: center;
 }
 
-.Navbar a {
+.Navbar a , .Navbar p , .Navbar h3{
   text-decoration: none;
+  color: var(--text-one)
 
+}
+
+.Navbar h3 {
+  margin-left: 1rem;
+}
+
+.Navbar p {
+  text-transform: capitalize;
 }
 

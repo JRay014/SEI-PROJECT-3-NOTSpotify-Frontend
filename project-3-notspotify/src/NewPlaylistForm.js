@@ -20,10 +20,11 @@ class NewPlaylist extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
+        console.log(this.props.currentUser)
         try {
             const response = await fetch(this.props.baseUrl + '/notspotify', {
                 method: 'POST',
-                body: JSON.stringify({ name: this.state.name }),
+                body: JSON.stringify({ name: this.state.name, author: this.props.currentUser._id }),
                 headers: {
                     'Content-Type': 'application/json'
                 }

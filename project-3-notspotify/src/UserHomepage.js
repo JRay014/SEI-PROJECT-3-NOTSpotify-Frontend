@@ -22,7 +22,8 @@ class Home extends Component {
       queryURL: '',
       querySongs: [],
       playlist: [],
-      newPlaylistForm: false
+      newPlaylistForm: false,
+      // currentUser: {}
     }
   }
 
@@ -32,6 +33,7 @@ class Home extends Component {
     // console.log(parseData)
     this.setState({
       playlist: parseData,
+      // currentUser: this.props.currentUser
     })
   }
 
@@ -126,14 +128,16 @@ class Home extends Component {
         <div className="App">
           {
             this.state.newPlaylistForm
-              ? <NewPlaylist baseUrl={baseUrl} addPlaylist={this.addPlaylist} />
+              ? <NewPlaylist baseUrl={baseUrl} addPlaylist={this.addPlaylist} currentUser={this.props.currentUser} />
               : ''
           }
 
           {
             this.state.playlist.map(playlist => {
               return (
-                <Playlist baseUrl={baseUrl} id={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} />
+                playlist.author === this.props.currentUser._id
+                  ? <Playlist baseUrl={baseUrl} id={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} />
+                  : ''
               )
             })
           }
