@@ -1,8 +1,12 @@
 .Playlist {
     text-align: center;
     width: 30%;
+    margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
+    background-color: rgb(202, 201, 194);
+    padding: 1rem;
+    border: 1px solid black;
 }
 
 .Playlist table {

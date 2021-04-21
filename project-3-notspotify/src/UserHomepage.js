@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Playlist from "./Playlist.js"
 import NewPlaylist from "./NewPlaylistForm"
+import AddSong from "./AddSong"
 
-
+import "./UserHomepage.css"
 
 let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
@@ -37,21 +38,21 @@ class Home extends Component {
     })
   }
 
-  getSong = async (event) => {
-    event.preventDefault()
-    try {
-      console.log(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
-      const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
-      const parseData = await response.json()
-      console.log(parseData)
-      this.setState({
-        querySongs: parseData,
-        queryURL: ''
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // getSong = async (event) => {
+  //   event.preventDefault()
+  //   try {
+  //     console.log(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
+  //     const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
+  //     const parseData = await response.json()
+  //     console.log(parseData)
+  //     this.setState({
+  //       querySongs: parseData,
+  //       queryURL: ''
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   handleChange = (event) => {
     this.setState({ [event.target.id]: event.target.value })
@@ -81,7 +82,7 @@ class Home extends Component {
 
   //To add new playlist
   handleNewPlaylist = () => {
-    console.log(this.state.playlistNameEdit)
+
     this.setState({
       newPlaylistForm: !this.state.newPlaylistForm
     })
@@ -103,10 +104,11 @@ class Home extends Component {
 
   render() {
     console.log(this.props.currentUser)
+    console.log(this.state.playlist)
 
     return (
       <>
-        <form onSubmit={(e) => this.getSong(e)}>
+        {/* <form onSubmit={(e) => this.getSong(e)}>
           <input
             id='song'
             type='text'
@@ -118,9 +120,10 @@ class Home extends Component {
             type='submit'
             value='Find Songs'
           />
-        </form>
+        </form> */}
+        <AddSong playlists={this.state.playlist} currentUser={this.props.currentUser} />
 
-        <div className="App-buttons">
+        <div className="App-newplaylist">
           <button onClick={this.handleNewPlaylist}> Add Playlist </button>
         </div>
 
@@ -128,7 +131,7 @@ class Home extends Component {
         <div className="App">
           {
             this.state.newPlaylistForm
-              ? <NewPlaylist baseUrl={baseUrl} addPlaylist={this.addPlaylist} currentUser={this.props.currentUser} />
+              ? <NewPlaylist baseUrl={baseUrl} addPlaylist={this.addPlaylist} currentUser={this.props.currentUser} handleNewPlaylist={this.handleNewPlaylist} />
               : ''
           }
 

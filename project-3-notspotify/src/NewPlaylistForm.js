@@ -33,10 +33,7 @@ class NewPlaylist extends Component {
             const parsedResponse = await response.json()
             this.props.addPlaylist(parsedResponse)
             this.props.handleNewPlaylist()
-            this.setState({
-                name: '',
 
-            })
         } catch (error) {
             console.log('Error: ', error)
         }
