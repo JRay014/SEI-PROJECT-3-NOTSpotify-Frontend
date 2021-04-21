@@ -39,7 +39,7 @@ class App extends Component {
         <BrowserRouter>
           {/* <Navbar /> */}
           <nav className="Navbar">
-            <h3>Not Spotify</h3>
+            <Link className="Navbar-home" to='/'>Not Spotify</Link>
             {this.state.isLoggedIn
               ? <div className="Navbar-loggedIn">
                 <p className="Navbar-welcome">Welcome {this.state.currentUser.username}!</p>
@@ -54,6 +54,7 @@ class App extends Component {
 
           </nav>
           <Switch>
+            <Route exact path="/" render={() => <div className="App-background"></div>} />
             <Route exact path="/users/login" render={(routeProps) => <Login {...routeProps} logInHandle={this.logInHandle} />} />
             <Route exact path="/users/register" render={(routeProps) => <Register {...routeProps} />} logInHandle={this.logInHandle} />
             <Route exact path="/notspotify" render={(routeProps) => this.state.isLoggedIn ? <Home currentUser={this.state.currentUser} /> : <Login {...routeProps} logInHandle={this.logInHandle} />} />
