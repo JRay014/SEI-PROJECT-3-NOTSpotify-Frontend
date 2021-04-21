@@ -29,7 +29,7 @@ class Home extends Component {
   getPlaylist = async () => {
     const response = await fetch(baseUrl + "/notspotify")
     const parseData = await response.json()
-    console.log(parseData)
+    // console.log(parseData)
     this.setState({
       playlist: parseData,
     })
@@ -46,7 +46,7 @@ class Home extends Component {
         querySongs: parseData,
         queryURL: ''
       })
-    } catch(err) {
+    } catch (err) {
       console.log(err)
     }
   }
@@ -60,7 +60,7 @@ class Home extends Component {
 
     try {
 
-      const response = await fetch(url, { method: "DELETE",mode: 'cors',credentials:'include' })
+      const response = await fetch(url, { method: "DELETE", mode: 'cors', credentials: 'include' })
       if (response.status === 200) {
         const index = this.state.playlist.findIndex(playlist => playlist._id === id)
         const copyPlaylist = [...this.state.playlist]
@@ -100,10 +100,11 @@ class Home extends Component {
 
 
   render() {
+    console.log(this.props.currentUser)
 
     return (
       <>
-        <form onSubmit={(e)=> this.getSong(e)}>
+        <form onSubmit={(e) => this.getSong(e)}>
           <input
             id='song'
             type='text'

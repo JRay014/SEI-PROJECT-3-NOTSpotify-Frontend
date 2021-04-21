@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(156, 226, 203);
+}
+
+.Navbar-links, .Navbar-loggedIn {
+  
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Navbar a {
+  text-decoration: none;
+
+}
+
