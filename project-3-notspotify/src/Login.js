@@ -60,7 +60,6 @@ export default class Login extends Component {
 
     return (
       <div className="Login-container">
-        <div className="Login-sidebar"></div>
         <h2>Login</h2>
         <form onSubmit={this.handleSubmit} className="Login-form">
           <label>Username </label>
