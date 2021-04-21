@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+const Musixmatch = require('musixmatch-node')
+const mxm = new Musixmatch('54340e8a4266915b118c498fc98c1f6f')
 
 let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
@@ -33,6 +35,19 @@ class AddSong extends Component {
 
     componentDidMount() {
         this.getPlaylist()
+    }
+
+    getSongFromAPI = async (event) => {
+        event.preventDefault()
+            try {
+                const lyrics = await mxm.getLyricsMatcher({
+                    q_track: 'sick sick sick',
+                    q_artist: 'queens of the stone age',
+                })
+                console.log(lyrics)
+            } catch (err) {
+                console.log(err)
+            }
     }
 
     render() {
