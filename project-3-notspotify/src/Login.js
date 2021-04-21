@@ -59,11 +59,16 @@ export default class Login extends Component {
   render() {
 
     return (
-      <div>
-        <h2>Log In Here</h2>
-        <form onSubmit={this.handleSubmit}>
+      <div className="Login-container">
+        <div className="Login-sidebar"></div>
+        <h2>Login</h2>
+        <form onSubmit={this.handleSubmit} className="Login-form">
+          <label>Username </label>
           <input type='text' name='username' placeholder="Username" required onChange={this.handleChange} />
+          <br></br>
+          <label>Password </label>
           <input type='password' name='password' placeholder="Password" required onChange={this.handleChange} />
+          <br></br>
           <button>Login</button>
         </form>
 
