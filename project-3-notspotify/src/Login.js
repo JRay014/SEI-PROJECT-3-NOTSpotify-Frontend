@@ -15,39 +15,50 @@ export default class Login extends Component{
   handleSubmit = async(event)=>{
     event.preventDefault()
     const user ={
-      username: this.state.username,
-      password: this.state.password,
+      username: event.target.username.value,
+      password: event.target.password.value,
     }
     try{
-      const response = await fetch('http://localhost:3003/users',{
+      const response = await fetch('http://localhost:3003/users/login',{
         method: "POST",
         body:JSON.stringify(user),
         headers:{
           'Content-Type':'application/json'
-        }
+        },
+        credentials:"include"
       })
       if (response.status ===200){
-        return(
-          console.log(response.ok)//Showing that the status is okay
-        )
+        console.log("Login Successful")
+        console.log(await response.json())
+        this.props.history.push('/notspotify')
+      }
+      else if (response.status ===404) {
+        console.log("User Not Found");
       }
     }
     catch(err){
       console.log('error:', err);
     }
   }
+
+
+
+
+
+
   componentDidMount(){
-    console.log(this.state);
+
   }
 
   render(){
+    console.log(this.props)
     return(
       <div>
         <h2>Log In Here</h2>
-        <form onSubmit= {this.handlesubmit}>
+        <form onSubmit= {this.handleSubmit}>
           <input type= 'text' name='username' placeholder="Username" required onChange={this.handleChange}/>
           <input type= 'password' name='password' placeholder="Password" required onChange={this.handleChange}/>
-          <button onSubmit={this.handleSubmit}>Login</button>
+          <button>Login</button>
         </form>
 
       </div>

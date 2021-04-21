@@ -12,12 +12,12 @@ export default function Nav (props){
           {props.currentUser?
           <>
           Hello, {props.currentUser.firstName}
-          <Button onClick={props.logout} href='/sessions' method='DELETE'>Logout</Button>
+          <Button onClick={props.logout} href='/users/logout' method='DELETE'>Logout</Button>
           </>:
           <>
           <Button href='/users/register'>Sign Up</Button>
 
-          <Button href='/sessions/new'>Log In</Button>
+          <Button href='/users/login'>Log In</Button>
           </>
           }
         </Menu.Item>

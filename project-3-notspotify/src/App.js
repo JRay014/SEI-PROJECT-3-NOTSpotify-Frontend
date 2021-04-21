@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import './App.css';
 import Playlist from "./Playlist.js"
 import NewPlaylist from "./NewPlaylistForm"
+import Nav from './Navbar'
+import Login from './Login'
+import Register from './Register'
 
 
 let baseUrl = ''
@@ -60,7 +64,7 @@ class App extends Component {
 
     try {
 
-      const response = await fetch(url, { method: "DELETE" })
+      const response = await fetch(url, { method: "DELETE",mode: 'cors',credentials:'include' })
       if (response.status === 200) {
         const index = this.state.playlist.findIndex(playlist => playlist._id === id)
         const copyPlaylist = [...this.state.playlist]
@@ -69,6 +73,7 @@ class App extends Component {
         this.setState({
           playlist: copyPlaylist
         })
+        console.log(await response.json());
       }
     }
     catch (err) {
@@ -102,6 +107,12 @@ class App extends Component {
 
     return (
       <>
+      <Nav />
+        <BrowserRouter>
+          <Route exact path="/users/login" render={(routeProps)=><Login {...routeProps}/>} />
+          <Route exact path="/users/register" component={Register} />
+        </BrowserRouter>
+
         <form onSubmit={(e)=> this.getSong(e)}>
           <input
             id='song'
