@@ -1,3 +1,18 @@
 .NewPlaylistForm button:hover {
     cursor: pointer;
 }
+
+.NewPlaylistForm input {
+    margin: .5rem;
+    width: 60%;
+}
+
+.NewPlaylistForm button {
+    margin-bottom: 1rem;
+}
+
+.NewPlaylistForm {
+   
+    width: 70%;
+    margin: 1rem auto;
+}
