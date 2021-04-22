@@ -4,7 +4,8 @@ import './App.css';
 import Home from "./UserHomepage"
 import Login from "./Login"
 import Register from "./Register"
-import Navbar from "./Navbar"
+import Landing from "./Landing"
+
 
 
 class App extends Component {
@@ -55,7 +56,7 @@ class App extends Component {
 
           </nav>
           <Switch>
-            <Route exact path="/" render={() => <div className="App-background"></div>} />
+            <Route exact path="/" render={() => <Landing />} />
             <Route exact path="/users/login" render={(routeProps) => <Login {...routeProps} logInHandle={this.logInHandle} />} />
             <Route exact path="/users/register" render={(routeProps) => <Register {...routeProps} />} logInHandle={this.logInHandle} />
             <Route exact path="/notspotify" render={(routeProps) => this.state.isLoggedIn ? <Home currentUser={this.state.currentUser} /> : <Login {...routeProps} logInHandle={this.logInHandle} />} />
