@@ -1,8 +1,5 @@
 import { Container, Menu, Button } from 'semantic-ui-react'
 
-
-
-
 export default function Navbar(props) {
   return (
     <Menu
@@ -28,4 +25,3 @@ export default function Navbar(props) {
     </Menu>
   )
 }
-

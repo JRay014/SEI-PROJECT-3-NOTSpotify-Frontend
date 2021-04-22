@@ -3,7 +3,7 @@ import Playlist from "./Playlist.js"
 import NewPlaylist from "./NewPlaylistForm"
 import AddSong from "./AddSong"
 
-import "./UserHomepage.css"
+import "./css/UserHomepage.css"
 
 let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
@@ -103,8 +103,8 @@ class Home extends Component {
 
 
   render() {
-    console.log(this.props.currentUser)
-    console.log(this.state.playlist)
+    // console.log(this.props.currentUser)
+    // console.log(this.state.playlist)
 
     return (
       <>

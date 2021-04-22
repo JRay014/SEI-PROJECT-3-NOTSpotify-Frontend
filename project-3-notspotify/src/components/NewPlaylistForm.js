@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./NewPlaylistForm.css"
+import "./css/NewPlaylistForm.css"
 
 
 class NewPlaylist extends Component {
