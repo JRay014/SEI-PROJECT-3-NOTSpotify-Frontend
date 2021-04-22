@@ -18,3 +18,7 @@
     * Database relationship between user and playlist
     * Only playlist owner can update and delete
     Sematic UI/ Bootstrap
+
+
+## Wire Frame
+<img width="611" alt="Screen Shot 2021-04-14 at 16 48 45" src="https://user-images.githubusercontent.com/75276378/115646995-1c447a80-a2f1-11eb-835f-dcbeff72de77.png">
