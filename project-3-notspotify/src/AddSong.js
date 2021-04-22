@@ -16,7 +16,8 @@ class AddSong extends Component {
         this.state = {
             name: '',
             artist: '',
-            playlists: []
+            playlists: [],
+            searchResult: []
         }
     }
     getPlaylist = async () => {
@@ -39,32 +40,35 @@ class AddSong extends Component {
 
     getSongFromAPI = async (event) => {
         event.preventDefault()
-            try {
-                const lyrics = await mxm.getLyricsMatcher({
-                    q_track: 'sick sick sick',
-                    q_artist: 'queens of the stone age',
-                })
-                console.log(lyrics)
-            } catch (err) {
-                console.log(err)
-            }
+        try {
+            const track = await mxm.searchTrack({
+                q_track: this.state.name,
+                q_artist: this.state.artist,
+            })
+            console.log(track)
+            this.setState({
+                searchResult: track.message.body.track_list
+            })
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     render() {
-        console.log(this.state.playlists)
-        console.log(this.props.currentUser)
+        console.log(this.state.searchResult)
 
         return (
-            <form className="AddSong" onSubmit={(evt) => this.handleSubmit(evt)}>
-                <h3>Add Song</h3>
-                <label htmlFor="name">Name: </label>
-                <input required="true" type="text" id="name" name="name" onChange={(evt) => this.handleChange(evt)} />
-                <br></br>
-                <label htmlFor="artist">Artist: </label>
-                <input required="true" type="text" id="artist" name="artist" onChange={(evt) => this.handleChange(evt)} />
-                <br></br>
-                <label for="playlists">Choose Playlist: </label>
-                <select name="playlist" id="playlists" >
+            <>
+                <form className="AddSong" onSubmit={(evt) => this.getSongFromAPI(evt)}>
+                    <h3>Lyrics Search</h3>
+                    <label htmlFor="name">Name: </label>
+                    <input required="true" type="text" id="name" name="name" onChange={(evt) => this.handleChange(evt)} />
+                    <br></br>
+                    <label htmlFor="artist">Artist: </label>
+                    <input type="text" id="artist" name="artist" onChange={(evt) => this.handleChange(evt)} />
+                    <br></br>
+                    {/* <label for="playlists">Choose Playlist: </label> */}
+                    {/* <select name="playlist" id="playlists" >
                     {this.state.playlists.map(playlist => {
                         if (playlist.author === this.props.currentUser._id) {
                             return <option value={playlist.name}>{playlist.name}</option>
@@ -72,10 +76,19 @@ class AddSong extends Component {
 
                     })}
 
-                </select>
-                <br></br>
-                <button type="submit">Add Song</button>
-            </form>
+                </select> */}
+                    <br></br>
+                    <button type="submit">Add Song</button>
+                </form>
+                {this.state.searchResult.map(song => {
+                    return <div>
+                        <p>{song.track.track_name}</p>
+                        <p>{song.track.artist_name}</p>
+                    </div>
+                })}
+
+
+            </>
         )
     }
 }

@@ -43,6 +43,7 @@ class App extends Component {
             {this.state.isLoggedIn
               ? <div className="Navbar-loggedIn">
                 <p className="Navbar-welcome">Welcome {this.state.currentUser.username}!</p>
+                <Link to='/notspotify'>Home</Link>
                 <Link to='/users/login' onClick={() => this.logOutHandle()}>Logout</Link>
               </div>
 

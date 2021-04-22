@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Song from "./Song"
 import './Playlist.css'
+import AddSong from './AddSong'
 
 class Playlist extends Component {
   constructor(props) {
