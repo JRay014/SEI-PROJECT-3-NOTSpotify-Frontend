@@ -108,20 +108,8 @@ class Home extends Component {
 
     return (
       <>
-        {/* <form onSubmit={(e) => this.getSong(e)}>
-          <input
-            id='song'
-            type='text'
-            placeholder='Search for Songs'
-            value={this.state.queryURL}
-            onChange={this.handleChange}
-          />
-          <input
-            type='submit'
-            value='Find Songs'
-          />
-        </form> */}
-        <AddSong playlists={this.state.playlist} currentUser={this.props.currentUser} />
+
+        {/* <AddSong playlists={this.state.playlist} currentUser={this.props.currentUser} /> */}
 
         <div className="App-newplaylist">
           <button onClick={this.handleNewPlaylist}> Add Playlist </button>

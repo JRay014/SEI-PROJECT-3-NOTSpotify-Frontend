@@ -4,7 +4,7 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: #D0F5A4;
   background: -moz-linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
   background: -webkit-linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);

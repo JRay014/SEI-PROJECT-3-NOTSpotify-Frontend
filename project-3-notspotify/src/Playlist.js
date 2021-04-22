@@ -11,7 +11,8 @@ class Playlist extends Component {
       songs: [],
       playlistName: '',
       id: null,
-      playlistNameEdit: false
+      playlistNameEdit: false,
+      addSongForm: false
     }
   }
 
@@ -97,12 +98,19 @@ class Playlist extends Component {
     }
   }
 
+  addSongFormHandle = () => {
+    this.setState({
+      addSongForm: !this.state.addSongForm
+    })
+  }
+
 
   componentDidMount() {
     this.setValue()
   }
 
   render() {
+    console.log(this.state.addSongForm)
 
     return (
       //Add Delete to each song render
@@ -123,7 +131,7 @@ class Playlist extends Component {
             }
             }>Delete</button>
             {/* <button onClick={() => this.handleEdit()}>Edit</button> */}
-            <button>Add Song</button>
+            <button onClick={() => this.addSongFormHandle()}>Add Song</button>
           </div>
 
         </div>
@@ -150,7 +158,10 @@ class Playlist extends Component {
               )}
           </tbody>
         </table>
-
+        {this.state.addSongForm
+          ? <AddSong />
+          : ''
+        }
 
       </div>
     )

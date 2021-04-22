@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import './AddSong.css'
 const Musixmatch = require('musixmatch-node')
 const mxm = new Musixmatch('54340e8a4266915b118c498fc98c1f6f')
+
 
 let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
@@ -55,37 +57,45 @@ class AddSong extends Component {
     }
 
     render() {
-        console.log(this.state.searchResult)
+
 
         return (
             <>
                 <form className="AddSong" onSubmit={(evt) => this.getSongFromAPI(evt)}>
-                    <h3>Lyrics Search</h3>
+                    <h3>Track Search</h3>
                     <label htmlFor="name">Name: </label>
-                    <input required="true" type="text" id="name" name="name" onChange={(evt) => this.handleChange(evt)} />
+                    <input type="text" id="name" name="name" onChange={(evt) => this.handleChange(evt)} />
                     <br></br>
                     <label htmlFor="artist">Artist: </label>
                     <input type="text" id="artist" name="artist" onChange={(evt) => this.handleChange(evt)} />
                     <br></br>
-                    {/* <label for="playlists">Choose Playlist: </label> */}
-                    {/* <select name="playlist" id="playlists" >
-                    {this.state.playlists.map(playlist => {
-                        if (playlist.author === this.props.currentUser._id) {
-                            return <option value={playlist.name}>{playlist.name}</option>
-                        }
 
-                    })}
-
-                </select> */}
                     <br></br>
-                    <button type="submit">Add Song</button>
+                    <button type="submit">Search</button>
                 </form>
-                {this.state.searchResult.map(song => {
-                    return <div>
-                        <p>{song.track.track_name}</p>
-                        <p>{song.track.artist_name}</p>
-                    </div>
-                })}
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Artist</th>
+                            <th>ADD</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.searchResult.map(song => {
+                            return (
+                                <tr>
+                                    <td>{song.track.track_name}</td>
+                                    <td>{song.track.artist_name}</td>
+                                    <td><button>Add</button></td>
+                                </tr>
+                            )
+
+                        })}
+                    </tbody>
+                </table>
 
 
             </>
