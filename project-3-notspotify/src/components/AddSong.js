@@ -62,7 +62,7 @@ class AddSong extends Component {
     }
 
     render() {
-
+        // console.log(this.state.searchResult)
 
         return (
             <>
