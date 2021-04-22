@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Playlist from "./Playlist.js"
 import NewPlaylist from "./NewPlaylistForm"
-import AddSong from "./AddSong"
+// import AddSong from "./AddSong"
 
 import "./css/UserHomepage.css"
 
@@ -103,10 +103,10 @@ class Home extends Component {
           }
 
           {
-            this.state.playlist.map(playlist => {
+            this.state.playlist.map((playlist, i) => {
               return (
                 playlist.author === this.props.currentUser._id
-                  ? <Playlist baseUrl={baseUrl} id={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} />
+                  ? <Playlist baseUrl={baseUrl} id={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} key={i}/>
                   : ''
               )
             })

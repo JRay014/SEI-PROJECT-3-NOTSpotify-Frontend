@@ -47,7 +47,7 @@ class AddSong extends Component {
                 q_track: this.state.name,
                 q_artist: this.state.artist,
             })
-            console.log(track)
+            // console.log(track)
             this.setState({
                 searchResult: track.message.body.track_list
             })
@@ -89,9 +89,9 @@ class AddSong extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.searchResult.map(song => {
+                        {this.state.searchResult.map((song, i) => {
                             return (
-                                <tr>
+                                <tr key={i}>
                                     <td>{song.track.track_name}</td>
                                     <td>{song.track.artist_name}</td>
                                     <td><button onClick={() => this.addSongHandle(song.track.track_name, song.track.artist_name)}>Add</button></td>

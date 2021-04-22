@@ -50,7 +50,7 @@ class Playlist extends Component {
     event.preventDefault()
 
     try {
-      const response = await fetch(this.props.baseUrl + '/notspotify/' + this.state.id, {
+      await fetch(this.props.baseUrl + '/notspotify/' + this.state.id, {
         method: 'PUT',
         body: JSON.stringify({ name: this.state.playlistName }),
         headers: {
@@ -103,7 +103,7 @@ class Playlist extends Component {
     try {
 
       const copySongs = [...this.state.songs]
-      console.log(copySongs)
+      // console.log(copySongs)
       copySongs.push(song)
       const response = await fetch(url, {
         method: "PUT",
@@ -139,12 +139,13 @@ class Playlist extends Component {
   }
 
   render() {
-    console.log(this.state.addSongForm)
+    // console.log(this.state.addSongForm)
 
     return (
       //Add Delete to each song render
       <div className="Playlist">
         <div className="Playlist-header">
+
           {!this.state.playlistNameEdit
             ? <p onClick={() => this.handleEdit()}>{this.state.playlistName} </p>
             : <form onSubmit={(evt) => this.handleSubmit(evt)}>
@@ -158,7 +159,7 @@ class Playlist extends Component {
             <button onClick={() => {
               this.props.deletePlaylist(this.props.playlist._id)
             }
-            }>Delete</button>
+            }>Delete Playlist</button>
             {/* <button onClick={() => this.handleEdit()}>Edit</button> */}
             <button onClick={() => this.addSongFormHandle()}>Add Song</button>
           </div>
@@ -177,10 +178,10 @@ class Playlist extends Component {
           </thead>
           <tbody>
             {
-              this.state.songs.map((song) => {
+              this.state.songs.map((song, i) => {
                 return (
-
-                  <Song song={song} deleteSong={this.deleteSong} />
+                  
+                  <Song song={song} deleteSong={this.deleteSong} key={i}/>
 
                 )
               }
