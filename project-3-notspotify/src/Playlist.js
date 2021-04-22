@@ -97,6 +97,35 @@ class Playlist extends Component {
       console.log('error: ', err)
     }
   }
+  addSong = async (song) => {
+    const url = this.props.baseUrl + "/notspotify/" + this.props.playlist._id
+
+    try {
+
+      const copySongs = [...this.state.songs]
+      console.log(copySongs)
+      copySongs.push(song)
+      const response = await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify({
+          songs: copySongs
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.status === 200) {
+
+        this.setState({
+          songs: copySongs
+        })
+      }
+    }
+    catch (err) {
+      console.log('error: ', err)
+    }
+  }
+
 
   addSongFormHandle = () => {
     this.setState({
@@ -159,7 +188,7 @@ class Playlist extends Component {
           </tbody>
         </table>
         {this.state.addSongForm
-          ? <AddSong />
+          ? <AddSong addSong={this.addSong} />
           : ''
         }
 

@@ -56,6 +56,11 @@ class AddSong extends Component {
         }
     }
 
+    addSongHandle = (track, artist) => {
+        const song = { name: track, artist: artist }
+        this.props.addSong(song)
+    }
+
     render() {
 
 
@@ -89,7 +94,7 @@ class AddSong extends Component {
                                 <tr>
                                     <td>{song.track.track_name}</td>
                                     <td>{song.track.artist_name}</td>
-                                    <td><button>Add</button></td>
+                                    <td><button onClick={() => this.addSongHandle(song.track.track_name, song.track.artist_name)}>Add</button></td>
                                 </tr>
                             )
 
