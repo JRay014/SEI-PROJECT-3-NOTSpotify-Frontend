@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./Landing.css"
+import "./css/Landing.css"
 class Landing extends Component {
     render() {
         return (

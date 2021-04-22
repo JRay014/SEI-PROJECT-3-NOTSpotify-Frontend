@@ -1,76 +1,66 @@
 import React, { Component } from 'react'
-import './Login.css'
+import "./css/Register.css"
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props)
-  }
+export default class Register extends Component {
   state = {
+    firstName: "",
     username: "",
     password: ""
   }
-
 
   handleChange = (event) => {
     const { name, value } = event.target
     this.setState({ [name]: value })
   }
-
   handleSubmit = async (event) => {
     event.preventDefault()
     const user = {
-      username: event.target.username.value,
-      password: event.target.password.value,
+      firstName: this.state.firstName,
+      username: this.state.username,
+      password: this.state.password,
     }
+    console.log(user)
     try {
-      const response = await fetch('http://localhost:3003/users/login', {
+      const response = await fetch('http://localhost:3003/users/register', {
         method: "POST",
         body: JSON.stringify(user),
         headers: {
           'Content-Type': 'application/json'
-        },
-        credentials: "include"
+        }
       })
       if (response.status === 200) {
-        console.log("Login Successful")
-        const currentUser = await response.json()
-        console.log(currentUser)
-        this.props.logInHandle(currentUser)
+        console.log('account created')
+        console.log(await response.json())
         this.props.history.push('/notspotify')
-      }
-      else if (response.status === 404) {
-        console.log("User Not Found");
       }
     }
     catch (err) {
       console.log('error:', err);
     }
   }
-
-
-
-
-
-
   componentDidMount() {
-
+    this.setState({
+      firstName: " ",
+      username: "",
+      password: "",
+    })
   }
 
   render() {
-
     return (
-      <div className="Login-container">
-        <h2>Login</h2>
-        <form onSubmit={this.handleSubmit} className="Login-form">
-          <label>Username </label>
+      <div className="Register-container">
+        <h2>Sign Up</h2>
+        <form onSubmit={this.handleSubmit}>
+          <label>Name</label>
+          <input type='text' name='firstName' placeholder="First Name" required onChange={this.handleChange} />
+          <br></br>
+          <label>Username</label>
           <input type='text' name='username' placeholder="Username" required onChange={this.handleChange} />
           <br></br>
-          <label>Password </label>
+          <label>Password</label>
           <input type='password' name='password' placeholder="Password" required onChange={this.handleChange} />
-          <br></br>
-          <button>Login</button>
+          <button onSubmit={this.handleSubmit}> Sign Up </button>
         </form>
-
       </div>
     )
   }

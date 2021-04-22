@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './AddSong.css'
+import './css/AddSong.css'
 const Musixmatch = require('musixmatch-node')
 const mxm = new Musixmatch('54340e8a4266915b118c498fc98c1f6f')
 
@@ -62,7 +62,7 @@ class AddSong extends Component {
     }
 
     render() {
-
+        // console.log(this.state.searchResult)
 
         return (
             <>

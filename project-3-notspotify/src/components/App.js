@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
-import './App.css';
+import './css/App.css';
 import Home from "./UserHomepage"
 import Login from "./Login"
 import Register from "./Register"
@@ -43,7 +43,7 @@ class App extends Component {
             <Link className="Navbar-home" to='/'>Not Spotify</Link>
             {this.state.isLoggedIn
               ? <div className="Navbar-loggedIn">
-                <p className="Navbar-welcome">Welcome {this.state.currentUser.username}!</p>
+                <p className="Navbar-welcome">Welcome {this.state.currentUser.firstName}!</p>
                 <Link to='/notspotify'>Home</Link>
                 <Link to='/users/login' onClick={() => this.logOutHandle()}>Logout</Link>
               </div>
