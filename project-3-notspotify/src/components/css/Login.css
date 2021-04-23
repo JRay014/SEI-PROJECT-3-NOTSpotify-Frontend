@@ -10,7 +10,7 @@
 }
 
 .Login-container h2 {
-color: rgb(6, 59, 6);
+color: rgb(0,0,0);
 }
 
 
@@ -26,6 +26,7 @@ color: rgb(6, 59, 6);
 
 .errorMsg {
   color: red;
-  font-size: 10px;
+  font-size: 15px;
+  text-align: center;
 
 }

@@ -68,7 +68,7 @@ class AddSong extends Component {
             <>
                 <form className="AddSong" onSubmit={(evt) => this.getSongFromAPI(evt)}>
                     <h3>Track Search</h3>
-                    <label htmlFor="name">Name: </label>
+                    <label htmlFor="name">Song: </label>
                     <input type="text" id="name" name="name" onChange={(evt) => this.handleChange(evt)} />
                     <br></br>
                     <label htmlFor="artist">Artist: </label>
@@ -82,7 +82,7 @@ class AddSong extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Song</th>
                             <th>Artist</th>
                             <th>ADD</th>
 

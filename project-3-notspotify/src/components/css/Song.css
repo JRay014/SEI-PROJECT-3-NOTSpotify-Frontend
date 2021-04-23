@@ -1,3 +1,4 @@
 .Song-delete:hover {
     cursor: pointer;
+    color: red;
 }
