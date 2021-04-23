@@ -9,6 +9,13 @@
  
 }
 
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 @media screen and (max-width: 600px) {
   :root {
     font-size: 16px;
