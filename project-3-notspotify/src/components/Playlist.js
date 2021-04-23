@@ -147,10 +147,10 @@ class Playlist extends Component {
         <div className="Playlist-header">
 
           {!this.state.playlistNameEdit
-            ? <p onClick={() => this.handleEdit()}>{this.state.playlistName} </p>
+            ? <h2 onClick={() => this.handleEdit()}>{this.state.playlistName} </h2>
             : <form onSubmit={(evt) => this.handleSubmit(evt)}>
               <label htmlFor="editPlaylistName"></label>
-              <input id="editPlaylistName" type="text" value={this.state.playlistName} onChange={(evt) => this.handleChangeName(evt)} ></input>
+              <input className="Playlist-name-edit" id="editPlaylistName" type="text" value={this.state.playlistName} onChange={(evt) => this.handleChangeName(evt)} ></input>
               {/* <button type="submit"></button> */}
             </form>
           }
