@@ -9,13 +9,23 @@
 
 }
 
-.Login-container h2 {
-color: rgb(6, 59, 6);
+
+.Login-container button {
+    background-color: var(--hightlight);
+    border: none;
+    color: var(--text-one);
+    font-size: 1rem;
+    -webkit-box-shadow: 5px 5px 0px 1px var(--secondary); 
+    box-shadow: 5px 5px 0px 1px var(--secondary);
+    transition: .3s;
 }
 
 
 .Login-container button:hover {
     cursor: pointer;
+    background-color: var(--secondary);
+    -webkit-box-shadow: 5px 5px 0px 1px var(--hightlight); 
+    box-shadow: 5px 5px 0px 1px var(--hightlight);
 }
 
 .Login-container button, .Login-container input, .Login-container label {
@@ -26,6 +36,13 @@ color: rgb(6, 59, 6);
 
 .errorMsg {
   color: red;
-  font-size: 10px;
+  font-size: 15px;
+  text-align: center;
 
 }
+
+@media screen and (max-width: 500px) {
+    .Login-container {
+      width: 80%
+    }
+  }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Playlist from "./Playlist.js"
 import NewPlaylist from "./NewPlaylistForm"
-import AddSong from "./AddSong"
+// import AddSong from "./AddSong"
 
 import "./css/UserHomepage.css"
 
@@ -17,11 +17,6 @@ class Home extends Component {
     super(props)
 
     this.state = {
-      rootURL: 'https://api.musixmatch.com/ws/1.1/track.search?',
-      apiKey: 'apikey=54340e8a4266915b118c498fc98c1f6f',
-      query: '&q=',
-      queryURL: '',
-      querySongs: [],
       playlist: [],
       newPlaylistForm: false,
       // currentUser: {}
@@ -37,22 +32,6 @@ class Home extends Component {
       // currentUser: this.props.currentUser
     })
   }
-
-  // getSong = async (event) => {
-  //   event.preventDefault()
-  //   try {
-  //     console.log(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
-  //     const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
-  //     const parseData = await response.json()
-  //     console.log(parseData)
-  //     this.setState({
-  //       querySongs: parseData,
-  //       queryURL: ''
-  //     })
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
 
   handleChange = (event) => {
     this.setState({ [event.target.id]: event.target.value })
@@ -124,10 +103,10 @@ class Home extends Component {
           }
 
           {
-            this.state.playlist.map(playlist => {
+            this.state.playlist.map((playlist, i) => {
               return (
                 playlist.author === this.props.currentUser._id
-                  ? <Playlist baseUrl={baseUrl} id={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} />
+                  ? <Playlist baseUrl={baseUrl} id={playlist._id} playlist={playlist} deletePlaylist={this.deletePlaylist} key={i}/>
                   : ''
               )
             })

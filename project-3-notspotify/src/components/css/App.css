@@ -1,6 +1,23 @@
 :root {
-  --primary :rgb(65, 112, 49);
-  --text-one : rgb(255, 244, 244);
+  --primary :#205459;
+  --secondary:#037F8C;
+  --text-one : #F2E7C4;
+  --accent: #F28F38;
+  --hightlight: #F25757;
+  font-size: 1vw;
+  transition: .3s;
+ 
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  :root {
+    font-size: 16px;
+  }
 }
 
 body {
@@ -9,22 +26,14 @@ body {
   background: -moz-linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
   background: -webkit-linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
   background: linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
+  overflow: hidden;
+  color: var(--text-one);
 }
 
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -56,7 +65,7 @@ body {
   background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
  background-size: cover;
  background-repeat: no-repeat;
-  
+
 }
 
 
@@ -66,25 +75,51 @@ body {
   display: flex;
   justify-content: space-between;
   background-color: var(--primary);
+  overflow: hidden;
+
 }
 
 .Navbar-home {
   margin-top: 1rem;
   margin-left: 1rem;
 }
+.Navbar-home img {
+  border-radius: 50%;
+  height: 7vh;
+  position:absolute;
+  left: 0;
+  top: 0;
+
+}
+
 
 .Navbar-links, .Navbar-loggedIn {
-  
+
   width: 30%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
+
 .Navbar a , .Navbar p , .Navbar h3{
   text-decoration: none;
   color: var(--text-one)
 
+}
+
+.Navbar-links a:hover {
+  background-color: var(--accent);
+}
+
+.Navbar-links a {
+  position: relative;
+  height: 100%;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  transition: .3s
+ 
 }
 
 .Navbar h3 {
@@ -95,3 +130,12 @@ body {
   text-transform: capitalize;
 }
 
+@media screen and (max-width: 500px) {
+  .Navbar-links {
+    width: 80%
+  }
+}
+
+input[type=text],input[type=password] {
+  outline: 3px solid var(--accent);
+}

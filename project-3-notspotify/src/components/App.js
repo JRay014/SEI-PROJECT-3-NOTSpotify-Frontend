@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import './css/App.css';
+import logo from './css/images/logo.png'
 import Home from "./UserHomepage"
 import Login from "./Login"
 import Register from "./Register"
@@ -40,10 +41,10 @@ class App extends Component {
         <BrowserRouter>
           {/* <Navbar /> */}
           <nav className="Navbar">
-            <Link className="Navbar-home" to='/'>Not Spotify</Link>
+            <Link className="Navbar-home" to='/'><img src={logo} alt="Not Spotify"/></Link>
             {this.state.isLoggedIn
               ? <div className="Navbar-loggedIn">
-                <p className="Navbar-welcome">Welcome {this.state.currentUser.firstName}!</p>
+                <p className="Navbar-welcome">Welcome {this.state.currentUser.firstName} !</p>
                 <Link to='/notspotify'>Home</Link>
                 <Link to='/users/login' onClick={() => this.logOutHandle()}>Logout</Link>
               </div>
