@@ -26,7 +26,7 @@ body {
   background: -moz-linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
   background: -webkit-linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
   background: linear-gradient(45deg, #D0F5A4 0%, #A9F5F0 56%, #D4F2AE 100%);
-  overflow: hidden;
+  
   color: var(--text-one);
 }
 
@@ -131,7 +131,13 @@ body {
 }
 
 @media screen and (max-width: 500px) {
-  .Navbar-links {
+  .Navbar-links, .Navbar-loggedIn {
+    width: 80%
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .Navbar-loggedIn {
     width: 80%
   }
 }

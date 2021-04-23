@@ -38,22 +38,52 @@
     
 }
 
-.Playlist-header-buttons button {
-    padding: .2rem;
-    margin-left: .2rem
-}
-
 .Playlist-header-buttons button:hover, .Playlist-delete-song:hover{
     cursor: pointer;
 }
 
 .Playlist table {
-	width: 800px;
+	width: 90%;
 	border-collapse: collapse;
 	overflow: hidden;
 	-webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
 }
+
+.Playlist-delete, .Playlist-add {
+	border: none;
+	padding: .5rem;
+	margin: .6rem;
+	font-size: .9rem;
+	transition: .3s;
+}
+
+.Playlist-delete {
+	color: var(--text-one);
+	background-color: var(--hightlight);
+	-webkit-box-shadow: 5px 5px 0px 1px var(--secondary); 
+    box-shadow: 5px 5px 0px 1px var(--secondary);
+	
+}
+
+.Playlist-delete:hover {
+	background-color: var(--accent);
+	-webkit-box-shadow: 5px 5px 0px 1px var(--primary); 
+    box-shadow: 5px 5px 0px 1px var(--primary);
+}
+.Playlist-add {
+	color: var(--text-one);
+	background-color: var(--secondary);
+	-webkit-box-shadow: 5px 5px 0px 1px var(--accent); 
+    box-shadow: 5px 5px 0px 1px var(--accent);
+}
+
+.Playlist-add:hover {
+	background-color: var(--accent);
+	-webkit-box-shadow: 5px 5px 0px 1px var(--primary); 
+    box-shadow: 5px 5px 0px 1px var(--primary);
+}
+
 
 .Playlist th,.Playlist td {
 	padding: 15px;
@@ -70,26 +100,11 @@
 		background-color: var(--primary);
 	}
 
-/* 
-tbody {
-	tr {
-		&:hover {
-			background-color: rgba(255,255,255,0.3);
+	@media screen and (max-width: 500px) {
+		.Playlist {
+		  width: 100%;
 		}
-	}
-	td {
-		position: relative;
-		&:hover {
-			&:before {
-				content: "";
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: -9999px;
-				bottom: -9999px;
-				background-color: rgba(255,255,255,0.2);
-				z-index: -1;
-			}
+		.Playlist table {
+			width: 100%;
 		}
-	}
-} */
+	  }

@@ -79,7 +79,7 @@ class AddSong extends Component {
                     <button type="submit">Search</button>
                 </form>
 
-                <table>
+                <table className="AddSong-form">
                     <thead>
                         <tr>
                             <th>Song</th>

@@ -43,6 +43,12 @@
 
 @media screen and (max-width: 500px) {
     .Login-container {
+      width: 95%
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .Login-container {
       width: 80%
     }
   }

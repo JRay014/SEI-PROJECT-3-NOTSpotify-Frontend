@@ -156,12 +156,12 @@ class Playlist extends Component {
           }
 
           <div className="Playlist-header-buttons">
-            <button onClick={() => {
+            <button className="Playlist-delete" onClick={() => {
               this.props.deletePlaylist(this.props.playlist._id)
             }
             }>Delete Playlist</button>
             {/* <button onClick={() => this.handleEdit()}>Edit</button> */}
-            <button onClick={() => this.addSongFormHandle()}>Add Song</button>
+            <button className="Playlist-add" onClick={() => this.addSongFormHandle()}>Add Song</button>
           </div>
 
         </div>
@@ -180,8 +180,8 @@ class Playlist extends Component {
             {
               this.state.songs.map((song, i) => {
                 return (
-                  
-                  <Song song={song} deleteSong={this.deleteSong} key={i}/>
+
+                  <Song song={song} deleteSong={this.deleteSong} key={i} />
 
                 )
               }

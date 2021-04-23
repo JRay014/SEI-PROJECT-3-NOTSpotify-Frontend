@@ -34,6 +34,12 @@ box-shadow: 5px 5px 5px -2px rgba(0,0,0,0.63);
 
 @media screen and (max-width: 500px) {
     .Register-container {
+      width: 95%
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .Register-container {
       width: 80%
     }
   }

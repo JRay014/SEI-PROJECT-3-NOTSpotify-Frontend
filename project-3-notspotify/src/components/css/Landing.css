@@ -15,3 +15,9 @@ text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4, 2px 1px 
     justify-content: center;
     align-items: center;
   }
+
+@media screen and (max-width: 700px) {
+  .Landing-background h1{
+    font-size: 5rem;
+  }
+}

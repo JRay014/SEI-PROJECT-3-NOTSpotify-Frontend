@@ -4,18 +4,25 @@
 }
 
 .App-newplaylist button {
-    width: 90%;
+    width: 85%;
     height: 2rem;
-    padding: .2rem;
-    background-color: rgb(105, 228, 228);
+    background-color: var(--secondary);
+    border: none;
+    color: var(--text-one);
+    font-size: 1rem;
+    -webkit-box-shadow: 3px 3px 0px 1px var(--accent); 
+    box-shadow: 3px 3px 0px 1px var(--accent);
     transition: .3s;
-    font-size: 1.2rem;
-    border:none;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.App-newplaylist button:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+    -webkit-box-shadow: 5px 5px 0px 1px var(--accent); 
+    box-shadow: 5px 5px 0px 1px var(--accent);
 }
 
 .App-newplaylist button:hover {
    cursor: pointer;
-   transform: scale(1.03);
+  
 }
