@@ -94,7 +94,7 @@ class AddSong extends Component {
                                 <tr key={i}>
                                     <td>{song.track.track_name}</td>
                                     <td>{song.track.artist_name}</td>
-                                    <td><button onClick={() => this.addSongHandle(song.track.track_name, song.track.artist_name)}>Add</button></td>
+                                    <td><button className="AddSong-add" onClick={() => this.addSongHandle(song.track.track_name, song.track.artist_name)}>Add</button></td>
                                 </tr>
                             )
 

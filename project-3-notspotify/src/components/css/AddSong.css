@@ -31,9 +31,20 @@
     transition: .3s;
 }
 
-.AddSong button:hover {
+.AddSong button:hover, .AddSong-add:hover {
     cursor: pointer;
     background-color: var(--hightlight);
-    -webkit-box-shadow: 5px 5px 0px 1px var(--accent); 
-    box-shadow: 5px 5px 0px 1px var(--accent);
+    -webkit-box-shadow: 3px 3px 0px 1px var(--accent); 
+    box-shadow: 3px 3px 0px 1px var(--accent);
+}
+
+.AddSong-add {
+    height: 2rem;
+    background-color: var(--accent);
+    border: none;
+    color: var(--text-one);
+    font-size: 1rem;
+    transition: .3s;
+    -webkit-box-shadow: 2px 2px 0px 1px var(--primary); 
+    box-shadow: 2px 2px 0px 1px var(--primary);
 }
