@@ -19,7 +19,7 @@ export default class Register extends Component {
       username: this.state.username,
       password: this.state.password,
     }
-    console.log(user)
+    // console.log(user)
     try {
       const response = await fetch(`${process.env.REACT_APP_BACKENDURL}/users/register`, {
         method: "POST",
