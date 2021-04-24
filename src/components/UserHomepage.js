@@ -5,12 +5,13 @@ import NewPlaylist from "./NewPlaylistForm"
 
 import "./css/UserHomepage.css"
 
-let baseUrl = ''
-if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'http://localhost:3003'
-} else {
-  baseUrl = 'heroku url here'
-}
+// let baseUrl = ''
+// if (process.env.NODE_ENV === 'development') {
+//   baseUrl = `${process.env.REACT_APP_BACKENDURL}`
+// } else {
+//   baseUrl = 'https://project-3-notspotify-backend.herokuapp.com'
+// }
+const baseUrl =`${process.env.REACT_APP_BACKENDURL}`
 
 class Home extends Component {
   constructor(props) {

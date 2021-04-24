@@ -21,7 +21,7 @@ export default class Register extends Component {
     }
     console.log(user)
     try {
-      const response = await fetch('http://localhost:3003/users/register', {
+      const response = await fetch(`${process.env.REACT_APP_BACKENDURL}/users/register`, {
         method: "POST",
         body: JSON.stringify(user),
         headers: {

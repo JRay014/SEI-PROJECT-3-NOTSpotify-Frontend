@@ -4,12 +4,13 @@ const Musixmatch = require('musixmatch-node')
 const mxm = new Musixmatch('54340e8a4266915b118c498fc98c1f6f')
 
 
-let baseUrl = ''
-if (process.env.NODE_ENV === 'development') {
-    baseUrl = 'http://localhost:3003'
-} else {
-    baseUrl = 'heroku url here'
-}
+// let baseUrl = ''
+// if (process.env.NODE_ENV === 'development') {
+//     baseUrl = `${process.env.REACT_APP_BACKENDURL}`
+// } else {
+//     baseUrl = 'https://project-3-notspotify-backend.herokuapp.com'
+// }
+const baseUrl = `${process.env.REACT_APP_BACKENDURL}`
 
 
 class AddSong extends Component {

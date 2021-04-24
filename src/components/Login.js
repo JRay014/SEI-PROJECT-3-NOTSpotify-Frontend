@@ -23,7 +23,7 @@ export default class Login extends Component {
       password: this.state.password,
     }
     try {
-      const response = await fetch('http://localhost:3003/users/login', {
+      const response = await fetch(`${process.env.REACT_APP_BACKENDURL}/users/login`, {
         method: "POST",
         body: JSON.stringify(user),
         headers: {
